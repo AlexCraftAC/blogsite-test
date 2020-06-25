@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="js/appsgeyser-xmlhttp.js"></script>
+    <script src="js/jquery.jfeed.custom.js"></script>
+    <script src="js/jfeedToGfeed.js"></script>
+    <script src="js/underscore-min.js"></script>
+    <script src="js/materialize.js"></script>
+    <script src="settings.js"></script>
+    <script src="js/blog.js"></script>
+</head>
+<body>
+<script>
+    function finalize(){
+        NotificationInterface.close();
+    }
+
+    var INTERVAL_BETWEEN_NOTIFICATIONS = 1000 * 60 * 60;
+    console.log($);
+    console.log("checker started");
+
+    if('keepAlive' in NotificationInterface) NotificationInterface.keepAlive();
+    if(!NotificationInterface.isAppRunning()){
+        loadFeeds(10,function(entries){
+        if(entries && entries.length > 0){
+			var notifications = NotificationInterface.getItem("notifications");
+            var entry = selectLatestEntry(entries);
+            console.log("checker got entries");
+            var lastPostTime = parseInt(NotificationInterface.getItem('lastPostTime'));
+            var lastNotification = parseInt(NotificationInterface.getItem("lastNotification"));
+            var now = (new Date()).getTime();
+			console.log(notifications);
+			if(notifications){
+				if(now - lastNotification < INTERVAL_BETWEEN_NOTIFICATIONS){
+					console.log("Last notification ("+lastNotification+") was less then "+INTERVAL_BETWEEN_NOTIFICATIONS+"millis ago.");
+					finalize();
+					return;
+				}
+            console.log("checker last post: " + lastPostTime + "; Currently checked time: " + entry['timestamp']);
+            if(lastPostTime && entry['timestamp']){
+                if(lastPostTime < entry['timestamp']){
+                    NotificationInterface.setItem('lastPostTime',entry['timestamp'].toString());
+                    NotificationInterface.setItem("lastNotification",(new Date()).getTime().toString());
+                    NotificationInterface.showNotification(
+                            entry['title'],
+                            "New post in " + Settings.name,
+                            "index.html#post"+entry['timestamp'],
+                            "true",
+                            entry['img'],
+                            entry['img']
+                    );
+                    finalize();
+                }
+            }
+			}
+            finalize();
+        }
+        });
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+var Settings = {"blogType":"blogger","blogUrl":"http:\/\/storenewapps.blogspot.com","notificationsEnabled":true,"colorsFromTheme":true,"colorPrimary":"2196f3","colorPrimaryDark":"1976D2","colorAccent":"448aff","name":"Top Apps","template":"blogV2","icon":"uploaded_data\/icon.png","themeColors":{"colorPrimary":"#2196f3","colorPrimaryDark":"#1976D2","colorAccent":"#448aff"}};

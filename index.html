@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <title>Blog app</title>
+
+    <!-- CSS  -->
+    <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+<ul id="dropdown1" class="dropdown-content">
+    <li style="width: 300px" data-donthideonclick="true">
+        <span><input type="checkbox" id="notifications" checked="checked"/>
+            <label for="notifications">Show notifications about new apps</label></span></li>
+    <!--    <li style="width: 300px">
+            <span><input type="checkbox" id="collapse" checked="checked"/><label
+                    for="collapse">Collapse posts</label></span></li>-->
+</ul>
+<nav class="z-depth-0">
+    <div class="nav-wrapper">
+        <div class="col s12">
+            <a id="logo-container" href="#" class="s10 brand-logo center truncate"></a>
+        </div>
+        <ul class="right">
+            <li class="settings">
+                <a class="dropdown-button" href="#!"
+                   data-activates="dropdown1"
+                   data-constrainwidth="false"
+                   data-beloworigin="true">
+                    <i class="material-icons">more_vert</i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="row">
+    <div class="col s12">
+        <ul class="tabs">
+            <li class="tab col s3"><a href="#index-banner">All Apps</a></li>
+            <li class="tab col s3"><a href="#fav">Favorite Apps</a></li>
+        </ul>
+    </div>
+</div>
+<div class="section" id="index-banner">
+    <div class="container">
+        <div class="loader preloader-wrapper big active">
+            <div class="spinner-layer spinner-blue-only">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row channels-collection">
+        </div>
+    </div>
+</div>
+<div id="fav" class="col s12 container">
+    <div class="row">
+        <h5 style="line-height: 40px;" class="center">Tap <i class="material-icons" style="font-size: 2.2em;position: relative;top: 15px;">star_border</i> to add favourite apps
+    </div>
+</div>
+
+<!--  Scripts-->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="js/underscore-min.js"></script>
+<script src="js/materialize.js"></script>
+<script src="js/appsgeyser-xmlhttp.js"></script>
+<script src="js/jquery.jfeed.custom.js"></script>
+<script src="js/jfeedToGfeed.js"></script>
+<script src="js/localstorage.js"></script>
+<script src="settings.js"></script>
+<script src="js/init.js"></script>
+<script src="js/blog.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
